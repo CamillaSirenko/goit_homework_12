@@ -110,9 +110,21 @@ class AddressBook(UserDict):
         try:
             with open(filename, 'r', encoding="utf-8") as file:
                 data = json.load(file)
-                self.data = data['contacts']
+            self.data = data['contacts']
         except FileNotFoundError:
             self.data = {}
+        except UnicodeDecodeError:
+            print(f"Error decoding file '{filename}' with UTF-8 encoding. Trying different encodings...")
+        encodings_to_try = ["utf-16", "cp1251", "latin-1"]
+        for encoding in encodings_to_try:
+            try:
+                with open(filename, 'r', encoding=encoding) as file:
+                    data = json.load(file)
+                    self.data = data['contacts']
+                    print(f"File successfully decoded using encoding: {encoding}")
+                    break
+            except UnicodeDecodeError:
+                print(f"Failed to decode file using encoding: {encoding}")
 
     def search(self, query):
         query = query.lower()  # Перетворимо запит на нижній регістр для порівняння

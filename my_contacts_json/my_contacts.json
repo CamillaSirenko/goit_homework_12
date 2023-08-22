@@ -6,13 +6,29 @@
                 "_Name__value": "Fot"
             },
             "optional_fields": {
-                "�������": {
+                "Òåëåôîí": {
                     "_Field__value": null,
                     "_Phone__value": "097643432"
                 },
-                "���� ����������": {
+                "Äåíü íàðîäæåííÿ": {
                     "_Field__value": null,
                     "_Birthday__value": "2000 03 15"
+                }
+            }
+        },
+        "Asrlin": {
+            "name": {
+                "_Field__value": null,
+                "_Name__value": "Asrlin"
+            },
+            "optional_fields": {
+                "Телефон": {
+                    "_Field__value": null,
+                    "_Phone__value": "97898546436"
+                },
+                "День народження": {
+                    "_Field__value": null,
+                    "_Birthday__value": "2000 05 23"
                 }
             }
         }
