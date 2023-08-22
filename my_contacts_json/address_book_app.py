@@ -95,9 +95,10 @@ class AddressBook(UserDict):
         self.data[record.name.value] = record
 
     def save_to_file(self, filename):
-        with open(filename, 'w') as file:
+        with open(filename, 'w', encoding="utf-8") as file:
             data = {'contacts': self.data}
             json.dump(data, file, default=self.serialize_contact, ensure_ascii=False, indent=4)
+
 
     def serialize_contact(self, obj):
         if isinstance(obj, datetime.date):
@@ -107,7 +108,7 @@ class AddressBook(UserDict):
     
     def load_from_file(self, filename):
         try:
-            with open(filename, 'r') as file:
+            with open(filename, 'r', encoding="utf-8") as file:
                 data = json.load(file)
                 self.data = data['contacts']
         except FileNotFoundError:
